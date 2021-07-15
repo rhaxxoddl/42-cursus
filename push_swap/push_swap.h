@@ -19,9 +19,6 @@
 #include <stdio.h>
 #include "./includes/Libft/libft.h"
 
-
-# define SWAP(x, y, temp) ( (temp)=(x), (x)=(y), (y)=(temp) )
-
 typedef struct NODE{
 	struct NODE *next;
 	struct NODE *before;
@@ -76,4 +73,16 @@ void		rrr(stack *ab_stack);
 void    	start_node(stack *ab_stack);
 void		atob(int l, stack *ab_stack);
 void		btoa(int l, stack *ab_stack);
+
+/*
+tool4.c
+*/
+long long   ft_atol(const char *nptr);
+
+/*
+error.c
+*/
+void        print_error();
+void    	linkedlist_free(node *head);
+void    	stack_free(stack *target);
 #endif

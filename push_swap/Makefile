@@ -10,7 +10,7 @@ CFLAGS	=	-Wall -Wextra -Werror
 DEBUGFLAG = -fsanitize=address -g
 LDFLAGS	=	-lc
 
-SRC		=	push_swap.c tool1.c tool2.c tool3.c linkedlist.c util.c
+SRC		=	push_swap.c tool1.c tool2.c tool3.c tool4.c linkedlist.c util.c error.c
 OBJS	=	$(SRC:.c=.o)
 ARFS	=	Libft.a
 

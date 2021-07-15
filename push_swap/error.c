@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void         print_error(int type, node *head, stack *target)
+void         print_error()
 {
     write(1, "ERROR\n", 6);
     exit(1);

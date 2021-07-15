@@ -22,9 +22,9 @@ void     rrr(stack *ab_stack)
 void     start_node(stack *ab_stack)
 {
     if (!(ab_stack->a_head = ft_calloc(1, sizeof(node))))
-        print_error(1);
+        print_error();
     if (!(ab_stack->b_head = ft_calloc(1, sizeof(node))))
-        print_error(1);
+        print_error();
 }
 
 void    atob(int l, stack *ab_stack)
@@ -36,7 +36,7 @@ void    atob(int l, stack *ab_stack)
 
     i = 0;
     if (l <= 1)
-        return(0);
+        print_error();
     pivot_value = find_pivot(node_to_sort_array(ab_stack->a_head->next, l));
     ra_count = 0;
     pb_count = 0;
@@ -77,7 +77,7 @@ void    btoa(int l, stack *ab_stack)
 
     i = 0;
     if (l <= 1)
-        print_error(1);
+        print_error();
     pivot_value = find_pivot(node_to_sort_array(ab_stack->a_head->next, l));
     rb_count = 0;
     pa_count = 0;;

@@ -50,7 +50,7 @@ int         pop(node *target)
     if (target == 0)
     {
         printf("[ERROR]pop : have not target\n");
-        print_error(1);
+        print_error();
     }
     temp = target;
     value = temp->value;

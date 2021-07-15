@@ -10,12 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-long long		    ft_atol(const char *nptr)
-    {
-        int 		i;
-        int	    	sign;
-        char	    *str;
-        long long   num;
+#include "push_swap.h"
+
+long long       ft_atol(const char *nptr)
+{
+    int 		i;
+    int	    	sign;
+    char	    *str;
+    long long   num;
 
 	i = 0;
 	str = (char*)nptr;
