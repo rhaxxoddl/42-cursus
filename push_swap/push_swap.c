@@ -34,7 +34,17 @@ int         push_swap(stack *ab_stack)
 
 void        handling_exceptions(int argc, char *argv[])
 {
+    int i;
 
+    i = 1;
+    if (argc <= 1 || argv[0] == 0)
+        print_error();
+    while(i <= argc)
+    {
+        if(ft_atol(argv[i]) < INT_MIN || ft_atol(argv[i]) > INT_MAX || argv[i])
+            print_error();
+        i++;
+    }
 }
 
 void        print_stack_info(stack *ab_stack)
@@ -83,10 +93,7 @@ int         main(int argc, char *argv[])
     node    *current;
     stack   *ab_stack;
 
-    if (argc <= 1 || argv[0] == 0)
-    {
-        print_error();
-    }
+    handling_exceptions(argc, argv);
     i = 1;
     if (!(ab_stack = ft_calloc(1, sizeof(stack))))
         print_error();
@@ -94,8 +101,6 @@ int         main(int argc, char *argv[])
     current = ab_stack->a_head;
     while (argv[i] != 0)
     {
-        if(argv[i] < INT_MIN || argv[i] > INT_MAX || argv[i])
-            print_error();
         add(current, ft_atoi(argv[i]));
         current = current->next;
         ab_stack->a_bottom = current;
