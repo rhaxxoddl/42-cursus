@@ -14,6 +14,7 @@
 # define __PUSH_SWAP_H__
 
 #include <unistd.h>
+#include <limits.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "./includes/Libft/libft.h"
@@ -37,15 +38,15 @@ typedef struct {
 /*
 linkedlist.c
 */
-int			switch_node(node *a);
-int			move_node(node *target, node *dest);
+void		switch_node(node *a);
+void		move_node(node *target, node *dest);
 int         pop(node *target);
-int         add(node *head, int value);
+void        add(node *head, int value);
 
 /*
 util.c
 */
-int			print_error();
+void		print_error();
 int			find_pivot(int array[]);
 void		q_sort(int array[], int left, int right);
 int			*node_to_sort_array(node *src, int length);
@@ -53,26 +54,26 @@ int			*node_to_sort_array(node *src, int length);
 /*
 tool1.c
 */
-int			sa(stack *ab_stack);
-int			sb(stack *ab_stack);
-int			ss(stack *ab_stack);
-int			pa(stack *ab_stack);
-int			pb(stack *ab_stack);
+void		sa(stack *ab_stack);
+void		sb(stack *ab_stack);
+void		ss(stack *ab_stack);
+void		pa(stack *ab_stack);
+void		pb(stack *ab_stack);
 
 /*
 tool2.c
 */
-int			ra(stack *ab_stack);
-int			rb(stack *ab_stack);
-int			rr(stack *ab_stack);
-int			rra(stack *ab_stack);
-int			rrb(stack *ab_stack);
+void		ra(stack *ab_stack);
+void		rb(stack *ab_stack);
+void		rr(stack *ab_stack);
+void		rra(stack *ab_stack);
+void		rrb(stack *ab_stack);
 
 /*
 tool3.c
 */
-int			rrr(stack *ab_stack);
-int     	start_node(stack *ab_stack);
-int			atob(int l, stack *ab_stack);
-int			btoa(int l, stack *ab_stack);
+void		rrr(stack *ab_stack);
+void    	start_node(stack *ab_stack);
+void		atob(int l, stack *ab_stack);
+void		btoa(int l, stack *ab_stack);
 #endif

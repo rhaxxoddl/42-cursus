@@ -1,25 +1,21 @@
 #include "push_swap.h"
 
-int     rrr(stack *ab_stack)
+void     rrr(stack *ab_stack)
 {
-    if (rra(ab_stack) < 0)
-        return(-1);
-    if (rrb(ab_stack) < 0)
-        return(-1);
+    rra(ab_stack);
+    rrb(ab_stack);
     write(1, "rrr\n", 4);
-    return(1);
 }
 
-int     start_node(stack *ab_stack)
+void     start_node(stack *ab_stack)
 {
     if (!(ab_stack->a_head = ft_calloc(1, sizeof(node))))
-        return(-1);
+        print_error(1);
     if (!(ab_stack->b_head = ft_calloc(1, sizeof(node))))
-        return(-1);
-    return(0);
+        print_error(1);
 }
 
-int    atob(int l, stack *ab_stack)
+void    atob(int l, stack *ab_stack)
 {
     int i;
     int pivot_value;
@@ -29,8 +25,7 @@ int    atob(int l, stack *ab_stack)
     i = 0;
     if (l <= 1)
         return(0);
-    if((pivot_value = find_pivot(node_to_sort_array(ab_stack->a_head->next, l))) == -1)
-        return(-1);
+    pivot_value = find_pivot(node_to_sort_array(ab_stack->a_head->next, l));
     ra_count = 0;
     pb_count = 0;
     while(i < l)
@@ -52,14 +47,16 @@ int    atob(int l, stack *ab_stack)
         rra(ab_stack);
         ra_count--;
     }
-    if(atob(ra_count, ab_stack) == -1)
-        return(-1);
-    if(btoa(pb_count, ab_stack) == -1)
-        return(-1);
-    return(0);
+    atob(ra_count, ab_stack);
+    btoa(pb_count, ab_stack);
+    while(pb_count > 0)
+    {
+        pa(ab_stack);
+        pb_count--;
+    }
 }
 
-int    btoa(int l, stack *ab_stack)
+void    btoa(int l, stack *ab_stack)
 {
     int i;
     int pivot_value;
@@ -68,7 +65,7 @@ int    btoa(int l, stack *ab_stack)
 
     i = 0;
     if (l <= 1)
-        return(0);
+        print_error(1);
     pivot_value = find_pivot(node_to_sort_array(ab_stack->a_head->next, l));
     rb_count = 0;
     pa_count = 0;;
@@ -91,9 +88,11 @@ int    btoa(int l, stack *ab_stack)
         rrb(ab_stack);
         rb_count--;
     }
-    if(atob(pa_count, ab_stack) == -1)
-        return(-1);
-    if(btoa(rb_count, ab_stack) == -1)
-        return(-1);
-    return(0);
+    atob(pa_count, ab_stack);
+    btoa(rb_count, ab_stack);
+    while(pa_count > 0)
+    {
+        pb(ab_stack);
+        pa_count--;
+    }
 }

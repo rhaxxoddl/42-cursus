@@ -1,10 +1,5 @@
 #include "push_swap.h"
 
-int         print_error()
-{
-    write(1, "ERROR\n", 6);
-    return(-1);
-}
 
 void        swap(int *x, int *y)
 {
@@ -21,7 +16,7 @@ int         find_pivot(int *array)
     int     temp;
 
     if(array == 0)
-        return(-1);
+        print_error(1);
     pibot_index = (int)sizeof(array) / (int)sizeof(int) / 2;
     temp = array[pibot_index];
     free(array);
@@ -35,7 +30,7 @@ void        q_sort(int *array, int left, int right)
     int     high;
 
     if (left >= right)
-        return;
+        print_error();
     pivot = array[left];
     low = left;
     high = right + 1;
@@ -63,7 +58,7 @@ int        *node_to_sort_array(node *src, int length)
 
     src_current = src;
     if (!(temp_array = ft_calloc(length, sizeof(int))))
-        return(0);
+        print_error();
     size = 0;
     while(size < length)
     {

@@ -12,53 +12,45 @@
 
 #include "push_swap.h"
 
-int 	sa(stack *ab_stack)
+void 	sa(stack *ab_stack)
 {
-    if (switch_node(ab_stack->a_head->next) < 0)
-        return(-1);
+    switch_node(ab_stack->a_head->next);
     if (ab_stack->a_head->next->next->next == 0)
         ab_stack->a_bottom = ab_stack->a_head->next->next;
     write(1, "sa\n", 3);
     return(1);
 }
 
-int     sb(stack *ab_stack)
+void     sb(stack *ab_stack)
 {
-    if (switch_node(ab_stack->b_head->next) < 0)
-        return(-1);
+    switch_node(ab_stack->b_head->next);
     if (ab_stack->b_head->next->next->next == 0)
         ab_stack->b_bottom = ab_stack->b_head->next->next;
     write(1, "sb\n", 3);
     return(1);
 }
 
-int     ss(stack *ab_stack)
+void     ss(stack *ab_stack)
 {
-    if (sa(ab_stack) < 0)
-        return(-1);
-    if (sb(ab_stack) < 0)
-        return(-1);
+    sa(ab_stack);
+    sb(ab_stack);
     write(1, "ss\n", 3);
-    return(0);
 }
-int     pa(stack *ab_stack)
+void     pa(stack *ab_stack)
 {
     if (ab_stack->a_bottom == 0)
         ab_stack->a_bottom = ab_stack->b_head->next;
     if (ab_stack->b_head->next != 0)
-        if (move_node(ab_stack->b_head->next, ab_stack->a_head) < 0)
-            return(-1);
+        move_node(ab_stack->b_head->next, ab_stack->a_head);
     write(1, "pa\n", 3);
     return(1);
 }
 
-int     pb(stack *ab_stack)
+void     pb(stack *ab_stack)
 {
     if (ab_stack->b_bottom == 0)
         ab_stack->b_bottom = ab_stack->a_head->next;
     if (ab_stack->a_head->next != 0)
-        if (move_node(ab_stack->a_head->next, ab_stack->b_head) < 0)
-            return(-1);
+        move_node(ab_stack->a_head->next, ab_stack->b_head);
     write(1, "pb\n", 3);
-    return(1);
 }

@@ -32,6 +32,11 @@ int         push_swap(stack *ab_stack)
     return (0);
 }
 
+void        handling_exceptions(int argc, char *argv[])
+{
+
+}
+
 void        print_stack_info(stack *ab_stack)
 {
     if (ab_stack->a_head->next != 0)
@@ -80,26 +85,25 @@ int         main(int argc, char *argv[])
 
     if (argc <= 1 || argv[0] == 0)
     {
-        return(print_error());
+        print_error();
     }
     i = 1;
     if (!(ab_stack = ft_calloc(1, sizeof(stack))))
-        return(print_error());
-    if (start_node(ab_stack) != 0)
-        return(print_error());
+        print_error();
+    start_node(ab_stack);
     current = ab_stack->a_head;
     while (argv[i] != 0)
     {
-        if (add(current, ft_atoi(argv[i])) == -1)
-            return(print_error());
+        if(argv[i] < INT_MIN || argv[i] > INT_MAX || argv[i])
+            print_error();
+        add(current, ft_atoi(argv[i]));
         current = current->next;
         ab_stack->a_bottom = current;
         i++;
     }
-    if(atob(i - 1, ab_stack) == -1)
-        return(-1);
+    atob(i - 1, ab_stack);
     print_stack(ab_stack);
-    print_stack_info(ab_stack);
+    print_stack_info(ab_stack); 
     print_stack(ab_stack);
     return(0);
 }
