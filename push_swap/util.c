@@ -41,7 +41,7 @@ void        q_sort(int array[], int left, int right)
     int     high;
 
     if (left >= right)
-        print_error();
+        return;
     pivot = array[left];
     low = left;
     high = right + 1;
