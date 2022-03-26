@@ -1,0 +1,3 @@
+[submodule "includes/Libft"]
+	path = includes/Libft
+	url = https://github.com/rhaxxoddl/Libft.git
